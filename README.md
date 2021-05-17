@@ -11,7 +11,7 @@ Command in bot:
   /random - take random book from DB
   
 To add new book in DB use in Adder "BookParserAdder.py". You must write all info in text file "book.txt" in this order:
-  name
+  name\n
   author
   description
   release
