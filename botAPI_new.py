@@ -11,6 +11,7 @@ counter = 0
 
 query_book_finder = ""
 
+
 @bookBot.message_handler(commands=['start'])
 def start_bot(message):
     img = open('welcome.png', 'rb')
@@ -66,8 +67,6 @@ def book_finder(message):
         bookBot.send_message(message.chat.id, "По вашому запиту нічого не знайдено!")
 
 
-
-
 @bookBot.message_handler(commands=['author'])
 def author_finder(message):
 
@@ -102,11 +101,11 @@ def author_finder(message):
         bookBot.send_message(message.chat.id, "По вашому запиту нічого не знайдено!")
 
 
-
 @bookBot.message_handler(commands=['random'])
 def random_finder(message):
     for book in db.take_random_book(1):
         bookBot.send_message(message.chat.id, book.show_info(), parse_mode='Markdown')
+
 
 @bookBot.callback_query_handler(func=lambda call: True)
 def finder_counter(call):
@@ -119,6 +118,7 @@ def finder_counter(call):
         counter -= 1
         call.message.text = query_book_finder
         book_finder(call.message)
+
 
 def start_bot():
     bookBot.polling(none_stop=True, interval=0)
