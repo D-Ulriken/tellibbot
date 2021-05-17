@@ -34,12 +34,11 @@ def help_bot(message):
 
 @bookBot.message_handler(commands=['book'])
 def book_finder(message):
-    print(message.text)
+
     global counter, books, query_book_finder
 
     book_name = str(message.text).replace("/book", "")
     book_name = book_name.lstrip()
-
 
     if book_name == "":
          bookBot.send_message(message.chat.id, "Введіть *НАЗВУ КНИГИ*", parse_mode='Markdown')
@@ -76,6 +75,7 @@ def author_finder(message):
 
     author_name = str(message.text).replace("/author", "")
     author_name = author_name.lstrip()
+
     if author_name == "":
         bookBot.send_message(message.chat.id, "Введіть *НАЗВУ КНИГИ*", parse_mode='Markdown')
         return
@@ -93,10 +93,14 @@ def author_finder(message):
         counter = len(books) - 1
     if counter > len(books) - 1:
         counter = 0
-    print(counter)
-    bookBot.send_message(message.chat.id, "[" + str(counter + 1) + "/" + str(books.__len__()) + "] "
-                         + "Із списка знайдено такі книги: \n\n"
-                         + books[counter].show_info(), reply_markup=markup_inline)
+
+    if len(books) > 0:
+        bookBot.send_message(message.chat.id, "[" + str(counter + 1) + "/" + str(books.__len__()) + "] "
+                             + "Із списка знайдено такі книги: \n\n"
+                             + books[counter].show_info(), reply_markup=markup_inline)
+    else:
+        bookBot.send_message(message.chat.id, "По вашому запиту нічого не знайдено!")
+
 
 
 @bookBot.message_handler(commands=['random'])
