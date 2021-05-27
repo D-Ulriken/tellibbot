@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 
-import DBApi_new as db
+import DBAPI as db
 
 token = '1657569148:AAFjoH6Q7Vv-bkme2SUghcdYYWJybOWaDZM'
 

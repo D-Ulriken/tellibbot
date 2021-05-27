@@ -1,5 +1,5 @@
-import botAPI_new as bot
-from DBApi_new import *
+import botAPI as bot
+from DBAPI import *
 
 if __name__ == '__main__':
     data_base = create_connection(DB)

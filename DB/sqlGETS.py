@@ -8,7 +8,7 @@ def read_query(connection, query):
     result = None
     try:
         cursor.execute(query)
-        result = cursor.fetchall() #  Возвращает массив, содержащий все строки результирующего набора
+        result = cursor.fetchall()
         return result
     except Error as e:
         print(f"The error '{e}' occurred")
