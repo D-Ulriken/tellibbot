@@ -71,4 +71,3 @@ def find_name(word, find: int = 0):
     return books
 
 
-#find_name(input("Cto nyzhno nayti"), 0)

@@ -6,7 +6,7 @@ import DBAPI as db
 token = '1657569148:AAFjoH6Q7Vv-bkme2SUghcdYYWJybOWaDZM'
 
 bookBot = telebot.TeleBot(token)
-
+bookBot.remove_webhook()
 counter = 0
 
 query_book_finder = ""
@@ -76,7 +76,7 @@ def author_finder(message):
     author_name = author_name.lstrip()
 
     if author_name == "":
-        bookBot.send_message(message.chat.id, "Введіть *НАЗВУ КНИГИ*", parse_mode='Markdown')
+        bookBot.send_message(message.chat.id, "Введіть *НАЗВУ АВТОРА*", parse_mode='Markdown')
         return
 
     query_book_finder = author_name
